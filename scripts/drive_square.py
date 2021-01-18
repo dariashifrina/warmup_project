@@ -19,7 +19,7 @@ from math import pi
 # How close we will get to wall.
 distance = 0.4
 
-class StopAtWall(object):
+class DrawASquare(object):
     """ This node walks the robot to wall and stops """
 
     def __init__(self):
@@ -36,8 +36,6 @@ class StopAtWall(object):
         # Create a default twist msg (all values 0).
         lin = Vector3()
         ang = Vector3()
-        self.firstTime = rospy.Time.now().to_sec()
-        stage = 0
         self.twist = Twist(linear=lin,angular=ang)
         self.angular_speed = 0.3
         self.relative_angle = 190 * pi / 360
@@ -65,11 +63,11 @@ class StopAtWall(object):
         self.twist.linear.x = 0
         self.twist.angular.z = -abs(self.angular_speed)
         current_angle = 0
-        t0 = rospy.Time.now().to_sec()
+        firstTime = rospy.Time.now().to_sec()
         while current_angle < self.relative_angle:
             #print(current_angle)
-            t1 = rospy.Time.now().to_sec() - t0
-            current_angle = self.angular_speed*(t1)
+            curTime = rospy.Time.now().to_sec() - firstTime
+            current_angle = self.angular_speed*(curTime)
             self.twist_pub.publish(self.twist)
         print("turned 90")
         self.twist.angular.z = 0
@@ -85,5 +83,5 @@ class StopAtWall(object):
 
 if __name__ == '__main__':
     # Declare a node and run it.
-    node = StopAtWall()
+    node = DrawASquare()
     node.run()
