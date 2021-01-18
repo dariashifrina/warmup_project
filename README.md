@@ -64,7 +64,7 @@ Here's a picture overview and a protocol for tackling rosbag issues later on:
 
 Steps:
 
-- [Terminal 1] Launch **`roscore` **
+- [Terminal 1] Launch **`roscore`**
 - [Terminal 2] Launch rosbag (replace cmd_vel with other topics you are tracking):
 
 ```bash
