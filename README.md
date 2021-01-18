@@ -12,7 +12,7 @@
 
 Heres a diagram showing the basic steps that my approach suggests:
 
-[![Drive Square Overview](robosteps.jpeg "Drive Square Overview")]
+[![Drive Square Overview](robosteps.jpg "Drive Square Overview")]
 
 ## Code Structure
 
