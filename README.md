@@ -2,7 +2,9 @@
 
 # Drive Square
 
-<img align="center" src="drive_square.gif">
+<p align="center">
+  <img src="drive_square.gif" alt="Drive Square Demo"/>
+</p>
 
 
 ## Objective
