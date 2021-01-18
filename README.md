@@ -12,7 +12,9 @@
 
 Heres a diagram showing the basic steps that my approach suggests:
 
-##Code Structure
+[![Drive Square Overview](robosteps.jpeg "Drive Square Overview")]
+
+## Code Structure
 
 Because this was a pretty simple program, I did not write any functions for it. All my code exists within the run function. Here are the important factors:
 
