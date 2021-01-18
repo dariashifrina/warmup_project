@@ -15,7 +15,10 @@
 
 Heres a diagram showing the basic steps that my approach suggests:
 
-<img align="center" src="robosteps.jpg" alt="drawing" height="200"/>
+
+<p align="center">
+  <img src="robosteps.jpg" alt="Overview" height="300px"/>
+</p>
 
 
 ## Code Structure
@@ -40,10 +43,24 @@ rosbag info [bag-name].bag
 
 This helps identify what is in your bag! You should see a bunch of stuff that looks like this:
 
+<p align="center">
+  <img src="good_rosbag.png" alt="Overview" height="200px"/>
+</p>
+
+
 
 If you just see two lines like this, then your bag is being corrupted:
 
+<p align="center">
+  <img src="bad_rosbag.png" alt="Overview" height="200px"/>
+</p>
+
+
 Here's a picture overview and a protocol for tackling rosbag issues later on:
+
+<p align="center">
+  <img src="terminals.jpg" alt="Overview" height="200px"/>
+</p>
 
 
 
