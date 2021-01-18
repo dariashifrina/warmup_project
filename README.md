@@ -1,7 +1,8 @@
 # warmup_project
 
 # Drive Square
-[![Gazebo Demo](drive_square.gif "Gazebo Demo")](drive_square.gif "Gazebo Demo")
+
+<img align="center" src="drive_square.gif">
 
 
 ## Objective
@@ -12,7 +13,8 @@
 
 Heres a diagram showing the basic steps that my approach suggests:
 
-[![Drive Square Overview](robosteps.jpg "Drive Square Overview")]
+<img align="center" src="robosteps.jpg" alt="drawing" height="200"/>
+
 
 ## Code Structure
 
