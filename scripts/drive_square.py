@@ -30,8 +30,8 @@ class DrawASquare(object):
         lin = Vector3()
         ang = Vector3()
         self.twist = Twist(linear=lin,angular=ang)
-        self.angular_speed = 0.3
-        self.relative_angle = 185 * pi / 360
+        self.angular_speed = 0.2
+        self.relative_angle = 180 * pi / 360
 
     def run(self):
         print("HERE")
