@@ -31,7 +31,7 @@ Because this was a pretty simple program, I did not write any functions for it. 
 
 Overall, for 10 seconds controlled by **`curTime`**, bot moves forward. Then, the x linear velocity is set to 0, it does a ~90 degree turn, and z axis angular velocity is set to 0. Then the run loop resets and the turtle repeats the two steps. It draws squares indefinitely. 
 
-##Overcome Challenges and Takeaways
+## Overcome Challenges and Takeaways
 
 As this was my first ROS project, there was a lot to learn! My biggest issues came from working with rosbag. For whatever reason, it seemed to not be functioning properly and not picking up on any topic output messages. Additionally, it created humongous files that were super hard to parse through to find issues on. Pouya MG, our class TA, was essential to helping me clarify what was going on. 
 
@@ -59,10 +59,8 @@ If you just see two lines like this, then your bag is being corrupted:
 Here's a picture overview and a protocol for tackling rosbag issues later on:
 
 <p align="center">
-  <img src="terminals.jpg" alt="Overview" height="200px"/>
+  <img src="terminals.jpg" alt="Overview" height="400px"/>
 </p>
-
-
 
 Steps:
 
@@ -98,7 +96,7 @@ rosnode kill rosbag_node_name
 rostopic echo /cmd_vel
 ```
 
-##Future Steps
+## Future Steps
 
 With more time, I would definitely work on other libraries like scan to minimize drift. At the moment, although the bot is set to turn 90 degrees, with drift, it turns slightly less than it should which makes the path look lopsided. I experimented with different values, like turning 91-95 degrees. However, those values made the bot evidently overshoot over time. I believe that working with the scan topic, the bot could scan for walls and make sure there's a standardized distance and degree to the obstacles around it. This could help it reset to go in a more straight path.
 
