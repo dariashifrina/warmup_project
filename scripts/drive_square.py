@@ -17,7 +17,7 @@ from math import pi
 distance = 0.4
 
 class DrawASquare(object):
-    """ This node walks the robot to wall and stops """
+    """ This node makes the robot walk in a square """
 
     def __init__(self):
         # Start rospy node.
