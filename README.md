@@ -34,7 +34,7 @@ Overall, for 10 seconds controlled by **`curTime`**, bot moves forward. Then, th
 # Wall Follower
 
 <p align="center">
-  <img src="wall)follower.gif" alt="Wall Follower Demo"/>
+  <img src="wall_follower.gif" alt="Wall Follower Demo"/>
 </p>
 
 
