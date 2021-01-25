@@ -34,7 +34,6 @@ class DrawASquare(object):
         self.relative_angle = 180 * pi / 360
 
     def run(self):
-        print("HERE")
         while not rospy.is_shutdown():
             firstTime = rospy.Time.now().to_sec()
             curTime = rospy.Time.now().to_sec() - firstTime
@@ -42,7 +41,6 @@ class DrawASquare(object):
             self.twist_pub.publish(self.twist)
             while(curTime < 10):
                 curTime = rospy.Time.now().to_sec() - firstTime
-                #self.twist_pub.publish(self.twist)
             self.twist.linear.x = 0
             self.twist_pub.publish(self.twist)
             self.twist.angular.z = -abs(self.angular_speed)
@@ -50,11 +48,8 @@ class DrawASquare(object):
             current_angle = 0
             firstTime = rospy.Time.now().to_sec()
             while current_angle < self.relative_angle:
-                #print(current_angle)
                 curTime = rospy.Time.now().to_sec() - firstTime
                 current_angle = self.angular_speed*(curTime)
-                #self.twist_pub.publish(self.twist)
-            print("turned 90")
             self.twist.angular.z = 0
             self.twist_pub.publish(self.twist)
             rospy.Rate(10).sleep()
