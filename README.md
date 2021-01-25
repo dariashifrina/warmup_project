@@ -31,6 +31,31 @@ Because this was a pretty simple program, I did not write any functions for it. 
 
 Overall, for 10 seconds controlled by **`curTime`**, bot moves forward. Then, the x linear velocity is set to 0, it does a ~90 degree turn, and z axis angular velocity is set to 0. Then the run loop resets and the turtle repeats the two steps. It draws squares indefinitely. 
 
+# Wall Follower
+
+<p align="center">
+  <img src="wall)follower.gif" alt="Wall Follower Demo"/>
+</p>
+
+
+## Objective
+ The task is to make the  bot find the closest object and approach it without bumping into it. This would be very simple if the bot could identify the closest object on its own and just drive in that direction. However, there is no immediate way to identify the closest object. Here is the procedure I created:
+ 
+ 1. Go through Laser Scan range array and find the closest object that does not exceed the distance boundaries (we don't want to be running into things that are too close).
+ 2. Rotate the bot to face the object using angular z velocity, similar to Drive Square.
+ 3. Set x velocity and appraoch the object until the bot is within a safe distance.
+
+
+## Code Structure
+
+All my code was written within the process_scan() function, which utilizes the Laser Scan. Within it my code functions within three phases:
+
+- **`Phase 0`**: identify the closest object using laser scan. The distance boundary for the closest object is set to 0.5, so if any object is closer than that, then it will be ignored by the bot. Once the object is found, the array index is saved, the angle is calculated by converting to radians, and phase 1 is activated. If no object is found, then the bot simply waits.
+
+- **`Phase 1`**: turns the bot to face the object. Using the angle from phase 0, the bot turns until it hits the boundary. Then, the z velocity is set to 0, x velocity is set to 0.5, and phase 2 is activated.
+
+- **`Phase 2`**: this moves the bot forward until it is within 0.5 of the object approaching. Then it stops, and goes back to phase 0. It will only move forward once a new object is identified within a safe range.
+
 # Person Follower
 
 <p align="center">
