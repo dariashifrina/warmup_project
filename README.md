@@ -134,7 +134,13 @@ Another lesson I learned was keeping a track of good conditions. I ran into an i
 
 ## Future Steps
 
+### Drive Square 
+
 With more time, I would definitely work on other libraries like scan to minimize drift. At the moment, although the bot is set to turn 90 degrees, with drift, it turns slightly less than it should which makes the path look lopsided. I experimented with different values, like turning 91-95 degrees. However, those values made the bot evidently overshoot over time. I believe that working with the scan topic, the bot could scan for walls and make sure there's a standardized distance and degree to the obstacles around it. This could help it reset to go in a more straight path.
+
+### Person Follower
+
+With more time, I would definitely work on making this a dynamically changing bot that could pick up changes in the environment and recaliberate to appraoch closer object. At the moment, the bot is only able to look for a new target once it goes through the three phases outlined. 
 
 
 
