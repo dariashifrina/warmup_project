@@ -39,22 +39,24 @@ Overall, for 10 seconds controlled by **`curTime`**, bot moves forward. Then, th
 
 
 ## Objective
- The task is to make the  bot find the closest object and approach it without bumping into it. This would be very simple if the bot could identify the closest object on its own and just drive in that direction. However, there is no immediate way to identify the closest object. Here is the procedure I created:
+
+The task is to make the bot navigate close to a wall and drive alongisde the wall at a fixed distance, handling corners. Here is the procedure I created:
  
- 1. Go through Laser Scan range array and find the closest object that does not exceed the distance boundaries (we don't want to be running into things that are too close).
- 2. Rotate the bot to face the object using angular z velocity, similar to Drive Square.
- 3. Set x velocity and appraoch the object until the bot is within a safe distance.
+ 1. Make the bot proceed forward until it nears 0.5 away from the wall.
+ 2. Scan either side for closest wall obstacles. Mark that as the direction of the turn.
+ 3. Use angular velocity z to turn towards that wall obstacle. 
+ Repeat
 
 
 ## Code Structure
 
 All my code was written within the process_scan() function, which utilizes the Laser Scan. Within it my code functions within three phases:
 
-- **`Phase 0`**: identify the closest object using laser scan. The distance boundary for the closest object is set to 0.5, so if any object is closer than that, then it will be ignored by the bot. Once the object is found, the array index is saved, the angle is calculated by converting to radians, and phase 1 is activated. If no object is found, then the bot simply waits.
+- **`Phase 0`**: keep going until the bot nears a wall.
 
-- **`Phase 1`**: turns the bot to face the object. Using the angle from phase 0, the bot turns until it hits the boundary. Then, the z velocity is set to 0, x velocity is set to 0.5, and phase 2 is activated.
+- **`Phase 1`**: At neared wall, scan either side and decide which is closer. 
 
-- **`Phase 2`**: this moves the bot forward until it is within 0.5 of the object approaching. Then it stops, and goes back to phase 0. It will only move forward once a new object is identified within a safe range.
+- **`Phase 2`**: Turn bot to face that side.
 
 # Person Follower
 
@@ -151,6 +153,10 @@ rosnode kill rosbag_node_name
 rostopic echo /cmd_vel
 ```
 
+### Wall Follower
+
+This gave me a lot of trouble because I could not find a good way to detect corners that were not right angles. My bot can only navigate right angle obstacles because it cannot turn beyond a certain range without falling off course. This allows it to perfectly function within the square walls but in more complex conditions it does not fit the parameters.
+
 ### Person Follower
 
 This project gave me a lot of trouble because I could not find a way to dynamically make the object tracking happen. Because of the static state of my steps, my bot could track down one object, then wait around for a new object to move. However, on its own, it could not accomodate dynamically changing tracking objects. In fact, this would make the bot go out of bounds. One issue I did overcome was fixing the angular velocity of the bot to not miss the target. For instance, I started out with an angular z velocity of 0.5. However, this would make the bot actually turn too quickly and miss the target. I learned that if I adjusted it to a smaller number of 0.2, it would make the target. 
@@ -162,6 +168,10 @@ Another lesson I learned was keeping a track of good conditions. I ran into an i
 ### Drive Square 
 
 With more time, I would definitely work on other libraries like scan to minimize drift. At the moment, although the bot is set to turn 90 degrees, with drift, it turns slightly less than it should which makes the path look lopsided. I experimented with different values, like turning 91-95 degrees. However, those values made the bot evidently overshoot over time. I believe that working with the scan topic, the bot could scan for walls and make sure there's a standardized distance and degree to the obstacles around it. This could help it reset to go in a more straight path.
+
+### Wall Follower
+
+With more time, I would work on making it function with variable corner angles. It would also be very interesting to see it detect differences between inner and outer corners. Because we were only expected to have a working both within an enclosed space, we do not need to worry about open world conditions, which I believe would be interesting to explore.
 
 ### Person Follower
 
