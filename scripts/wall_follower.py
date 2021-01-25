@@ -24,7 +24,7 @@ curTime = 0
 current_angle = 0
 
 class WallFollower(object):
-    """ This node walks the robot to wall and stops """
+    """ This node makes robot follow the wall """
 
     def __init__(self):
         # Start rospy node.
@@ -44,7 +44,6 @@ class WallFollower(object):
         self.angular_speed = 0.1
         self.relative_angle = 90 * pi/ 360
 
-        #self.direction = 0
 
     def process_scan(self, data):
         global turn, chosen_dist, direction, firstTime, curTime, current_angle
